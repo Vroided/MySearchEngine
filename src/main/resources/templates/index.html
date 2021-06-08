@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no">
+    <title>首页</title>
+    <link rel="stylesheet" href="../static/mdui/css/mdui.min.css" th:href="@{../mdui/css/mdui.min.css}">
+    <link rel="stylesheet" href="../static/css/index.css" th:href="@{../css/index.css}">
+    <script src="mdui/js/mdui.min.js" th:src="@{../mdui/js/mdui.min.js}" type="text/javascript"
+            charset="utf-8"></script>
+</head>
+<body class="mdui-container-fluid">
+<div class="mdui-valign" style="height: 88vh;">
+    <div id="fa" class="mdui-typo mdui-center" style="text-align: center;">
+        <h1>搜索引擎</h1>
+        <div class="mdui-row mdui-center mdui-textfield" style="min-width: 35vw;">
+					<span class="mdui-float-left">
+						<input id="keyword" class="mdui-textfield-input" style="min-width: 30vw;" type="text"
+                               placeholder="Search Content"/>
+					</span>
+            <span class="mdui-float-left">
+                <button id="search"
+                        class="mdui-btn mdui-btn mdui-ripple mdui-color-theme-accent mdui-m-l-1" >Search</button>
+            </span>
+        </div>
+        <div id="display" class="mdui-shadow-4">
+            <ul id="display-list" class="mdui-list" style="min-width: 30vw;">
+                <li class="mdui-list-item mdui-ripple mdui-text-truncate" style="display: none"></li>
+                <li class="mdui-list-item mdui-ripple mdui-text-truncate" style="display: none"></li>
+                <li class="mdui-list-item mdui-ripple mdui-text-truncate" style="display: none"></li>
+                <li class="mdui-list-item mdui-ripple mdui-text-truncate" style="display: none"></li>
+                <li class="mdui-list-item mdui-ripple mdui-text-truncate" style="display: none"></li>
+                <li class="mdui-list-item mdui-ripple mdui-text-truncate" style="display: none"></li>
+            </ul>
+        </div>
+    </div>
+</div>
+</body>
+<script src="./js/jquery-3.3.1.min.js" th:src="@{../js/jquery-3.3.1.min.js}" type="text/javascript"
+        charset="utf-8"></script>
+<script src="./js/index.js" th:src="@{../js/index.js}" type="text/javascript" charset="utf-8"></script>
+</html>

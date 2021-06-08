@@ -1,0 +1,18 @@
+spring:
+  elasticsearch:
+    rest:
+      uris: 39.108.112.79:9200
+      read-timeout: 30s
+      connection-timeout: 5s
+      username: elastic
+      password: 123456
+  thymeleaf:
+    enabled: true
+    encoding: utf-8
+    prefix: classpath:/templates/
+    cache: false
+    mode: HTML
+    suffix: .html
+
+server:
+  port: 8848

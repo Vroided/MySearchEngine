@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no">
+    <title th:text="${title}"></title>
+    <link rel="stylesheet" href="../static/mdui/css/mdui.min.css" th:href="@{../mdui/css/mdui.min.css}">
+    <link rel="stylesheet" href="../static/css/result.css" th:href="@{../css/result.css}">
+</head>
+<body class="mdui-container-fluid">
+<div id="topbar" class="mdui-valign">
+    <div id="fa" class="mdui-typo mdui-center" style="text-align: center;">
+        <div class="mdui-row mdui-center mdui-textfield" style="min-width: 400px; margin: 0 15px;">
+					<span class="mdui-float-left">
+						<input id="keyword" class="mdui-textfield-input mdui-float-left"
+                               style="width: 30vw;" type="text"
+                               th:value="${keyword}" placeholder="Search Content"/>
+					</span>
+            <span class="mdui-float-right">
+						<button id="search"
+                                class="mdui-btn mdui-btn mdui-ripple mdui-color-theme-accent mdui-float-right mdui-m-l-1">Search</button>
+					</span>
+        </div>
+        <div id="display" class="mdui-shadow-4">
+            <ul id="display-list" class="mdui-list" style="min-width: 30vw;">
+                <li class="mdui-list-item mdui-ripple mdui-text-truncate" style="display: none"></li>
+                <li class="mdui-list-item mdui-ripple mdui-text-truncate" style="display: none"></li>
+                <li class="mdui-list-item mdui-ripple mdui-text-truncate" style="display: none"></li>
+                <li class="mdui-list-item mdui-ripple mdui-text-truncate" style="display: none"></li>
+                <li class="mdui-list-item mdui-ripple mdui-text-truncate" style="display: none"></li>
+                <li class="mdui-list-item mdui-ripple mdui-text-truncate" style="display: none"></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="mdui-divider mdui-m-t-1"></div>
+<div id="result-list" class="mdui-container">
+    <div class="mdui-typo-body-1-opacity mdui-center">
+        <span>共查到</span>
+        <span th:text="${totalElements}"></span>
+        <span>条数据</span>
+    </div>
+
+    <div id="item-list" class="item-list mdui-card-shadow">
+        <a id="test-none-data" class="mc-list-item mdui-shadow-2" th:each="book:${books}">
+            <div class="title mdui-text-color-theme-text" th:text="${book.name}">名称</div>
+            <div class="meta mdui-text-color-theme-secondary">
+                <div class="author" title="作者" th:text="${book.author}">作者</div>
+                <div class="publish" title="出版社" th:text="${book.publish}">出版社</div>
+            </div>
+            <div class="content mdui-text-color-theme-secondary">
+                <div class="snippet" th:text="${book.info}">暂无内容~</div>
+            </div>
+        </a>
+    </div>
+    <!--展示底部的页码-->
+    <div class="mdui-container-fluid mdui-btn-group mdui-m-y-2" id="pagination">
+        <a th:if="${pagination.showFirst}" class="mdui-btn mdui-btn-raised mdui-center"
+           th:href="@{/q(name=${keyword},page=${1})}">
+            <i class="mdui-icon material-icons">first_page</i>
+        </a>
+        <a class="mdui-btn mdui-btn-raised mdui-center" mdui-tooltip="{content: 'Previous'}"
+           th:href="@{/q(name=${keyword},page=${pagination.page - 1})}"
+           th:if="${pagination.showPre}">
+            <i class="mdui-icon material-icons">navigate_before</i>
+        </a>
+        <a th:each="page:${pagination.pages}"
+           th:class="${pagination.page==page}? 'mdui-btn mdui-btn-raised mdui-btn-active' : 'mdui-btn mdui-btn-raised'"
+           th:href="@{/q(name=${keyword},page=${page})}"
+           th:text="${page}"
+           th:mdui-tooltip="'{content: ' + ${page} + '}'">
+        </a>
+        <a th:if="${pagination.showNext}" class="mdui-btn mdui-btn-raised mdui-center"
+           th:href="@{/q(name=${keyword},page=${pagination.page + 1})}"
+           mdui-tooltip="{content: 'Next'}">
+            <i class="mdui-icon material-icons">navigate_next</i>
+        </a>
+        <a th:if="${pagination.showLast}" class="mdui-btn mdui-btn-raisede mdui-center"
+           th:href="@{/q(name=${keyword},page=${pagination.totalPage})}"
+           mdui-tooltip="{content: 'Next'}">
+            <i class="mdui-icon material-icons">last_page</i>
+        </a>
+    </div>
+</div>
+
+</body>
+<script src="../static/js/jquery-3.3.1.min.js" th:src="@{../js/jquery-3.3.1.min.js}" type="text/javascript"
+        charset="utf-8"></script>
+<script src="../static/js/index.js" th:src="@{../js/index.js}" type="text/javascript" charset="utf-8"></script>
+<script src="../static/js/result.js" th:src="@{../js/result.js}" type="text/javascript" charset="utf-8"></script>
+</html>

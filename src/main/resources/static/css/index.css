@@ -1,0 +1,38 @@
+ul {
+    padding: 0 !important;
+    margin: 0;
+}
+
+#keyword {
+    padding-left: 1rem !important;
+}
+
+#display {
+    position: absolute;
+    display: none;
+    z-index: 1000;
+    background-color: rgb(250, 250, 250);
+}
+
+#display > ul > li {
+    height: 3rem !important;
+    min-height: 3rem !important;
+    line-height: 3rem !important;
+    /* margin: 0 !important; */
+    text-align: left;
+}
+
+#fa {
+    position: relative;
+}
+
+#search {
+    background-color: #61a2d9;
+}
+
+.keyword-truncate {
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
